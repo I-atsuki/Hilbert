@@ -8,8 +8,8 @@ public class HilbertTurtle extends Turtle {
     public HilbertTurtle(Drawer drawer) {
         super(drawer);
     }
-    
-
+    //ArrayList<Integer> blst;
+    //ArrayList<Integer>
 
 
     public void draw(int order, double step, double turn) {
@@ -26,6 +26,9 @@ public class HilbertTurtle extends Turtle {
                 case -1:
                     rotate(-turn);
                     break;
+                case 10:
+                    turn = -turn;
+                    break;
             }
         }
     }
@@ -34,20 +37,20 @@ public class HilbertTurtle extends Turtle {
 
         if (order > 0) {
             lst.add(-1 *tu);
-            ArrayList<Integer> a = beforedraw(order - 1, step, - tu);
+            lst.add(10);
+            ArrayList<Integer> a = beforedraw(order - 1, step,tu);
             lst.addAll(a);
+            lst.add(10);
             lst.add(0);
             lst.add(1*tu);
-            ArrayList<Integer> b = new ArrayList<Integer>();
-            for(int i =0; i < a.size() ; i++){
-                b.add(a.get(i) *-1);
-            }
-            lst.addAll(b);
-            lst.add(0);
-            lst.addAll(b);
-            lst.add(1*tu);
+            lst.addAll(a);
             lst.add(0);
             lst.addAll(a);
+            lst.add(1*tu);
+            lst.add(0);
+            lst.add(10);
+            lst.addAll(a);
+            lst.add(10);
             lst.add(-1*tu);
         }
         return lst;
