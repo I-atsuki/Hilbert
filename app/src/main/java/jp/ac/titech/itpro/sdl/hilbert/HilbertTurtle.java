@@ -8,13 +8,15 @@ public class HilbertTurtle extends Turtle {
     public HilbertTurtle(Drawer drawer) {
         super(drawer);
     }
-    //ArrayList<Integer> blst;
-    //ArrayList<Integer>
+    private ArrayList<Integer> blst =new ArrayList<Integer>();
+    private int bnum=0;
 
 
     public void draw(int order, double step, double turn) {
 
         ArrayList<Integer> lst = beforedraw(order,step,1);
+        blst = lst;
+        bnum = order;
         for(int i =0; i < lst.size() ; i++){
             switch (lst.get(i)){
                 case 0:
@@ -38,7 +40,12 @@ public class HilbertTurtle extends Turtle {
         if (order > 0) {
             lst.add(-1 *tu);
             lst.add(10);
-            ArrayList<Integer> a = beforedraw(order - 1, step,tu);
+            ArrayList<Integer> a;
+            if(order-1 == bnum){
+                a = blst;
+            }else{
+                a = beforedraw(order - 1, step,tu);
+            }
             lst.addAll(a);
             lst.add(10);
             lst.add(0);
